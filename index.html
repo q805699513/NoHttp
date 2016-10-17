@@ -12,7 +12,7 @@
   <body>
     <section class="page-header">
       <h1 class="project-name">Nohttp</h1>
-      <h2 class="project-tagline">NoHttp support large files, file upload, download, automatically maintain a Cookie, asynchronous/synchronous request, a variety of Http caching pattern, redirect, 302/303 support proxy server.</h2>
+      <h2 class="project-tagline">Android Http标准框架，底层OkHttp，与RxJava完美结合，比Retrofit更简单易用。</h2>
       <a href="https://github.com/yanzhenjie/NoHttp" class="btn">View on GitHub</a>
       <a href="https://github.com/yanzhenjie/NoHttp/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/yanzhenjie/NoHttp/tarball/master" class="btn">Download .tar.gz</a>
@@ -20,54 +20,213 @@
 
     <section class="main-content">
       <h1>
-<a id="nohttp" class="anchor" href="#nohttp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>NoHttp</h1>
+<a id="nohttp一个有情怀的网络框架" class="anchor" href="#nohttp%E4%B8%80%E4%B8%AA%E6%9C%89%E6%83%85%E6%80%80%E7%9A%84%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>NoHttp，一个有情怀的网络框架</h1>
 
-<blockquote>
-<p>NoHttp, feeling spill（NoHttp，情怀四溢）.</p>
-</blockquote>
+<p><img src="http://www.nohttp.net/image/nohttp_logo.svg" alt="NoHttp Logo">  </p>
 
-<p><img src="http://www.nohttp.net/image/nohttp_logo.svg" alt="NoHttp Logo"></p>
+<p>严振杰的博客：<a href="http://blog.yanzhenjie.com">blog.yanzhenjie.com</a>   </p>
 
-<p><a href="https://github.com/yanzhenjie/NoHttp/blob/master/README-cn.md"><strong>中文版文档</strong></a>  </p>
+<p>NoHttp重要升级，支持与<code>RxJava</code>完美结合、支持一句话切换底层为<code>OkHttp</code>，支持请求Restful风格的接口，比Retrofit更简单易用。  </p>
 
-<p>The author's url: <a href="http://www.yanzhenjie.com">http://www.yanzhenjie.com</a><br>
-The author's blog: <a href="http://blog.csdn.net/yanzhenjie1003">http://blog.csdn.net/yanzhenjie1003</a>  </p>
+<p><strong>欢迎加入QQ交流群：<a href="http://jq.qq.com/?_wv=1027&amp;k=40Qqms0">547839514</a></strong></p>
 
 <hr>
 
-<h1>
-<a id="nohttp-home-page-and-doc-url" class="anchor" href="#nohttp-home-page-and-doc-url" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>NoHttp home page and doc url</h1>
-
-<p>NoHttp home page: <a href="http://www.nohttp.net">http://www.nohttp.net</a><br>
-NoHttp document: <a href="http://doc.nohttp.net">http://doc.nohttp.net</a><br>
-NoHttp source code: <a href="https://github.com/yanzhenjie/NoHttp/">https://github.com/yanzhenjie/NoHttp</a><br>
-Document also continues to improve, there is a problem can send <a href="https://github.com/yanzhenjie/NoHttp/issues">issues</a>, or send an email to me directly: <a href="mailto:smallajax@foxmail.com">smallajax@foxmail.com</a>.</p>
-
-<h1>
-<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h1>
+<h2>
+<a id="导航目录点击可跳转到对应节点处" class="anchor" href="#%E5%AF%BC%E8%88%AA%E7%9B%AE%E5%BD%95%E7%82%B9%E5%87%BB%E5%8F%AF%E8%B7%B3%E8%BD%AC%E5%88%B0%E5%AF%B9%E5%BA%94%E8%8A%82%E7%82%B9%E5%A4%84" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>导航目录(点击可跳转到对应节点处)</h2>
 
 <ul>
 <li>
-<p>Eclipse use <a href="https://github.com/yanzhenjie/NoHttp/blob/master/Jar/nohttp1.0.4.jar?raw=true">NoHttp Jar</a>, if need to rely on the source code, <a href="https://codeload.github.com/yanzhenjie/NoHttp/zip/1.0.4">download</a>.</p>
-
-<blockquote>
-<p><a href="https://github.com/yanzhenjie/NoHttp/blob/master/Jar/nohttp1.0.4-include-source.jar?raw=true">download jar [include source code，274k]</a><br>
-<a href="https://github.com/yanzhenjie/NoHttp/blob/master/Jar/nohttp1.0.4.jar?raw=true">download jar [not include source code，147k]</a>  </p>
-</blockquote>
+<a href="#%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88">Demo效果预览</a><br>
 </li>
-<li><p>AndroidStudio using Gradle build add dependent (recommended)</p></li>
+<li>
+<a href="#%E6%A1%86%E6%9E%B6%E7%89%B9%E6%80%A7">NoHttp特性</a><br>
+</li>
+<li>
+<a href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">AndroidStuio、Eclipse使用方法</a><br>
+</li>
+<li>
+<a href="#%E5%88%9D%E5%A7%8B%E5%8C%96">NoHttp初始化</a><br>
+</li>
+<li>
+<a href="#%E6%9D%83%E9%99%90">需要的权限</a><br>
+</li>
+<li>
+<a href="#%E5%8F%8B%E5%A5%BD%E7%9A%84%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F">友好的调试模式</a><br>
+</li>
+<li>
+<a href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6">RxJava</a><br>
+</li>
+<li>
+<a href="#%E8%AF%B7%E6%B1%82%E9%98%9F%E5%88%97">请求队列</a><br>
+</li>
+<li>
+<a href="#%E5%87%A0%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AF%B7%E6%B1%82">String、Bitmap、JavaBean、Json请求</a><br>
+</li>
+<li>
+<a href="#%E6%B7%BB%E5%8A%A0%E5%8F%82%E6%95%B0">添加参数，可以链式调用</a><br>
+</li>
+<li>
+<a href="#%E6%8F%90%E4%BA%A4%E8%AF%B7%E6%B1%82%E5%8C%85%E4%BD%93">提交Json、XML、自定义Body等</a><br>
+</li>
+<li>
+<a href="#%E5%90%8C%E6%AD%A5%E8%AF%B7%E6%B1%82">同步请求</a><br>
+</li>
+<li>
+<a href="#%E4%BA%94%E5%A4%A7%E7%BC%93%E5%AD%98%E6%A8%A1%E5%BC%8F">五大缓存模式</a><br>
+</li>
+<li>
+<a href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD">文件下载</a><br>
+</li>
+<li>
+<a href="#%E5%8F%96%E6%B6%88%E8%AF%B7%E6%B1%82">如何取消请求</a><br>
+</li>
+<li>
+<a href="#%E5%81%9C%E6%AD%A2%E9%98%9F%E5%88%97">停止队列</a><br>
+</li>
+<li>
+<a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%B7%E6%B1%82">自定义请求</a><br>
+</li>
+<li>
+<a href="#%E4%BB%A3%E7%A0%81%E6%B7%B7%E6%B7%86">代码混淆</a><br>
+</li>
 </ul>
 
-<div class="highlight highlight-source-groovy"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.yolanda.nohttp:nohttp:1.0.4<span class="pl-pds">'</span></span></pre></div>
+<h2>
+<a id="效果预览" class="anchor" href="#%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>效果预览</h2>
 
-<h1>
-<a id="download-demo" class="anchor" href="#download-demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Download Demo</h1>
+<p>    </p>
 
-<p><a href="https://codeload.github.com/yanzhenjie/NoHttp/zip/1.0.4">Downloa source code of NoHttp, Demo</a><br>
-<a href="https://github.com/yanzhenjie/NoHttp/blob/master/nohttp_sample.apk?raw=true">Download Demo APK</a>  </p>
+<p>  </p>
 
-<h1>
-<a id="permission" class="anchor" href="#permission" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Permission</h1>
+<h2>
+<a id="框架特性" class="anchor" href="#%E6%A1%86%E6%9E%B6%E7%89%B9%E6%80%A7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>框架特性</h2>
+
+<p>比Retrofit使用更简单、更易用。</p>
+
+<ul>
+<li>动态配置底层框架为<strong>OkHttp</strong>、HttpURLConnection</li>
+<li>与<strong>RxJava</strong>完美结合，支持异步请求、支持同步请求</li>
+<li>多文件上传，支持大文件上传，表单提交数据</li>
+<li>文件下载、上传下载、上传和下载的进度回调、错误回调</li>
+<li>支持Json、xml、Map、List的提交</li>
+<li>完美的Http缓存模式，可指定缓存到数据库、SD卡，缓存数据已安全加密
+
+<ul>
+<li>在6.0以上手机缓存到SD卡时需要请求运行时权限：<a href="https://github.com/yanzhenjie/AndPermission">AndPermission</a>
+</li>
+</ul>
+</li>
+<li>自定义Request，直接请求JsonObject、JavaBean等</li>
+<li>Cookie的自动维持，App重启、关开机后还持续维持</li>
+<li>http 301 302 303 304 307重定向，支持多层嵌套重定向</li>
+<li>Https、自签名网站Https的访问、支持双向验证</li>
+<li>失败重试机制，支持请求优先级</li>
+<li>GET、POST、PUT、PATCH、HEAD、DELETE、OPTIONS、TRACE等请求协议</li>
+<li>用队列保存请求，平均分配多线程的资源，支持多个请求并发</li>
+<li>支持取消某个请求、取消指定多个请求、取消所有请求</li>
+</ul>
+
+<h2>
+<a id="使用方法" class="anchor" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>使用方法</h2>
+
+<h3>
+<a id="androidstudio使用方式" class="anchor" href="#androidstudio%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AndroidStudio使用方式</h3>
+
+<ul>
+<li>如果使用HttpURLConnection作为网络层：<br>
+</li>
+</ul>
+
+<div class="highlight highlight-source-groovy"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.yolanda.nohttp:nohttp:1.1.0<span class="pl-pds">'</span></span></pre></div>
+
+<ul>
+<li>如果要使用OkHttp作为网络层，请再依赖：<br>
+</li>
+</ul>
+
+<div class="highlight highlight-source-groovy"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.yanzhenjie.nohttp:okhttp:1.1.0<span class="pl-pds">'</span></span></pre></div>
+
+<h3>
+<a id="eclipse使用方式" class="anchor" href="#eclipse%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Eclipse使用方式</h3>
+
+<ul>
+<li>如果使用HttpURLConnection作为网络层：<br>
+<a href="https://github.com/yanzhenjie/NoHttp/blob/master/Jar/nohttp1.1.0.jar?raw=true">下载NoHttp Jar包</a><br>
+</li>
+<li><p>如果使用OkHttp做为网络层<br>
+<a href="https://github.com/yanzhenjie/NoHttp/blob/master/Jar/nohttp-okhttp1.1.0.jar?raw=true">下载NoHttp-OkHttp Jar包</a>，并且请自行下载<a href="https://github.com/square/okhttp">okhttp</a>、<a href="https://github.com/square/okio">okio</a>的jar包。</p></li>
+<li><p>建议没用Android的同学尽早切换到AndroidStudio来开发Android应用。</p></li>
+</ul>
+
+<h2>
+<a id="初始化" class="anchor" href="#%E5%88%9D%E5%A7%8B%E5%8C%96" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>初始化</h2>
+
+<p>NoHttp初始化需要一个Context，最好在<code>Application</code>的<code>onCreate()</code>中初始化，记得在<code>manifest.xml</code>中注册<code>Application</code>。</p>
+
+<h3>
+<a id="一般情况下只需要这样初始化" class="anchor" href="#%E4%B8%80%E8%88%AC%E6%83%85%E5%86%B5%E4%B8%8B%E5%8F%AA%E9%9C%80%E8%A6%81%E8%BF%99%E6%A0%B7%E5%88%9D%E5%A7%8B%E5%8C%96" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>一般情况下只需要这样初始化</h3>
+
+<p>直接初始化后，一切采用默认设置。</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">NoHttp</span><span class="pl-k">.</span>initialize(<span class="pl-v">this</span>);</pre></div>
+
+<h3>
+<a id="如果需要自定义配置更多信息" class="anchor" href="#%E5%A6%82%E6%9E%9C%E9%9C%80%E8%A6%81%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%9B%B4%E5%A4%9A%E4%BF%A1%E6%81%AF" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>如果需要自定义配置更多信息</h3>
+
+<ul>
+<li>超时配置，默认10s</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">NoHttp</span><span class="pl-k">.</span>initialize(<span class="pl-v">this</span>, <span class="pl-k">new</span> <span class="pl-smi">NoHttp</span>.<span class="pl-smi">Config</span>()
+    <span class="pl-c">// 设置全局连接超时时间，单位毫秒</span>
+    .setConnectTimeout(<span class="pl-c1">30</span> <span class="pl-k">*</span> <span class="pl-c1">1000</span>)
+    <span class="pl-c">// 设置全局服务器响应超时时间，单位毫秒</span>
+    .setReadTimeout(<span class="pl-c1">30</span> <span class="pl-k">*</span> <span class="pl-c1">1000</span>)
+);</pre></div>
+
+<ul>
+<li>配置缓存，默认保存在数据库</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">NoHttp</span><span class="pl-k">.</span>initialize(<span class="pl-v">this</span>, <span class="pl-k">new</span> <span class="pl-smi">NoHttp</span>.<span class="pl-smi">Config</span>()
+    <span class="pl-c1">...</span>
+    <span class="pl-c">// 保存到数据库</span>
+    .setCacheStore(
+        <span class="pl-k">new</span> <span class="pl-smi">DBCacheStore</span>(<span class="pl-v">this</span>)<span class="pl-k">.</span>setEnable(<span class="pl-c1">true</span>) <span class="pl-c">// 如果不使用缓存，设置false禁用。</span>
+    )
+    <span class="pl-c">// 或者保存到SD卡</span>
+    .setCacheStore(
+        <span class="pl-k">new</span> <span class="pl-smi">DiskCacheStore</span>(<span class="pl-v">this</span>)
+    )
+);</pre></div>
+
+<ul>
+<li>配置Cookie保存的位置，默认保存在数据库</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">NoHttp</span><span class="pl-k">.</span>initialize(<span class="pl-v">this</span>, <span class="pl-k">new</span> <span class="pl-smi">NoHttp</span>.<span class="pl-smi">Config</span>()
+    <span class="pl-c1">...</span>
+    <span class="pl-c">// 默认保存数据库DBCookieStore，开发者可以自己实现。</span>
+    .setCookieStore(
+        <span class="pl-k">new</span> <span class="pl-smi">DBCookieStore</span>(<span class="pl-v">this</span>)<span class="pl-k">.</span>setEnable(<span class="pl-c1">false</span>) <span class="pl-c">// 如果不维护cookie，设置false禁用。</span>
+    )
+);</pre></div>
+
+<ul>
+<li>配置网络层</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">NoHttp</span><span class="pl-k">.</span>initialize(<span class="pl-v">this</span>, <span class="pl-k">new</span> <span class="pl-smi">NoHttp</span>.<span class="pl-smi">Config</span>()
+    <span class="pl-c1">...</span>
+    <span class="pl-c">// 使用HttpURLConnection</span>
+    .setNetworkExecutor(<span class="pl-k">new</span> <span class="pl-smi">URLConnectionNetworkExecutor</span>())
+    <span class="pl-c">// 使用OkHttp</span>
+    .setNetworkExecutor(<span class="pl-k">new</span> <span class="pl-smi">OkHttpNetworkExecutor</span>())
+);</pre></div>
+
+<h2>
+<a id="权限" class="anchor" href="#%E6%9D%83%E9%99%90" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>权限</h2>
 
 <div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.READ_EXTERNAL_STORAGE<span class="pl-pds">"</span></span> /&gt;
 &lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.WRITE_EXTERNAL_STORAGE<span class="pl-pds">"</span></span> /&gt;
@@ -75,215 +234,141 @@ Document also continues to improve, there is a problem can send <a href="https:/
 &lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.ACCESS_NETWORK_STATE<span class="pl-pds">"</span></span> /&gt;
 &lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.ACCESS_WIFI_STATE<span class="pl-pds">"</span></span> /&gt;</pre></div>
 
-<h1>
-<a id="nohttp-features" class="anchor" href="#nohttp-features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>NoHttp features</h1>
+<h2>
+<a id="友好的调试模式" class="anchor" href="#%E5%8F%8B%E5%A5%BD%E7%9A%84%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>友好的调试模式</h2>
 
-<p>NoHttp implements Http1.1 (<a href="http://www.ietf.org/rfc/rfc2616.txt">RFC2616</a>), a standard Http framework.</p>
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">Logger</span><span class="pl-k">.</span>setDebug(<span class="pl-c1">true</span>);<span class="pl-c">// 开启NoHttp的调试模式, 配置后可看到请求过程、日志和错误信息。</span>
+<span class="pl-smi">Logger</span><span class="pl-k">.</span>setTag(<span class="pl-s"><span class="pl-pds">"</span>NoHttpSample<span class="pl-pds">"</span></span>);<span class="pl-c">// 设置NoHttp打印Log的tag。</span></pre></div>
 
-<ul>
-<li>Request and download queue, average distribution of each thread resources, support for multiple requests concurrently.</li>
-<li>Support the GET, POST, PUT, PATCH, HEAD, DELETE, OPTIONS, such as TRACE request protocol.</li>
-<li>Support for POST, PUT, PATCH, DELETE the file upload (Html form principle).</li>
-<li>File download, upload, download, upload and download the progress of the callback, error correction.</li>
-<li>Provides five kinds of data caching policy for developers to choose to use (see below) in detail.</li>
-<li>Support to cancel a request, specify multiple request cancel, cancel all requests.</li>
-<li>Support custom Request, using NoHttp generics can be parsed into any data you want to format (String, Json, JavaBean, etc.).</li>
-<li>Automatic maintenance of support Session, cookies, restart the App, turn off the boot after also continue to maintain.</li>
-<li>Support Https, self-signed website Https access, support two-way authentication.</li>
-</ul>
+<p>开启NoHttp的调试模式后可看到请求过程、日志和错误信息，基本不用抓包。可以看到请求头、请求数据、响应头、Cookie等，而且打印出的Log非常整齐。</p>
+
+<p>所以说，如果你使用过程中遇到什么问题了，开启调试模式，一切妖魔鬼怪都会现形的。</p>
 
 <h2>
-<a id="friendly-debug-mode" class="anchor" href="#friendly-debug-mode" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Friendly debug mode</h2>
+<a id="第三方异步框架" class="anchor" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>第三方异步框架</h2>
 
-<p>NoHttp provides a debug mode, after open the can see clear request process, such as how to transfer data, basic need not caught. Can see that the request headers, request data, the process of response headers, cookies, etc. You don't have to worry about too many Log will dazzle you, clean and tidy.</p>
+<p>可以与RxJava、RxAndroid、RxBus、EventBus等第三方异步任务框架完美结合使用，这里在demo中给出了和RxJava一起使用的代码。</p>
 
-<h2>
-<a id="request" class="anchor" href="#request" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Request</h2>
+<h3>
+<a id="rxjava" class="anchor" href="#rxjava" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RxJava</h3>
 
-<blockquote>
-<ul>
-<li>Support the request String, Json, FastJson, Gson, Bitmap, javabeans and XML extensions.</li>
-<li>An asynchronous request, get the results directly to update the UI, support synchronous request.</li>
-</ul>
-</blockquote>
+<p>NoHttp可以和RxJava完美结合，这里列出如何使用，具体的封装请参考Demo的RxNoHttp。</p>
 
-<h2>
-<a id="multiple-file-upload" class="anchor" href="#multiple-file-upload" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multiple file upload</h2>
-
-<p>All download progress callback, error correction and other friendly interface.</p>
-
-<blockquote>
-<ul>
-<li>Large file upload, OOM will not occur.</li>
-<li>File upload more, multiple key file, a key multiple files（<code>List&lt;File&gt;</code>）.</li>
-<li>Support File, InputStream, ByteArray containing, Bitmap, realize NoHttp Binary interface, anything can theoretically.</li>
-<li>Support to cancel the upload.</li>
-</ul>
-</blockquote>
+<div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">UserInfo</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-k">JavaBeanRequest&lt;&gt;</span>(url, <span class="pl-smi">UserInfo</span><span class="pl-k">.</span>class);
+<span class="pl-smi">RxNoHttp</span><span class="pl-k">.</span>request(<span class="pl-v">this</span>, request, <span class="pl-k">new</span> <span class="pl-k">SimpleSubscriber&lt;<span class="pl-k">Response&lt;<span class="pl-smi">UserInfo</span>&gt;</span>&gt;</span>() {
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onNext</span>(<span class="pl-k">Response&lt;<span class="pl-smi">YanZhenjie</span>&gt;</span> <span class="pl-v">entityResponse</span>) {
+        <span class="pl-c">// 直接拿到实体对象</span>
+        <span class="pl-smi">UserInfo</span> userInfo <span class="pl-k">=</span> entiryResponse<span class="pl-k">.</span>get();
+    }
+});</pre></div>
 
 <h2>
-<a id="file-download" class="anchor" href="#file-download" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>File download</h2>
-
-<blockquote>
-<ul>
-<li>File to download, support for multiple files to download at the same time, and a progress callback, error correction and so on.</li>
-<li>Support for a moratorium on continue to download, support to cancel the download, support breakpoint continuingly.</li>
-<li>To make use of much NoHttp file download can do a download manager.</li>
-</ul>
-</blockquote>
-
-<h2>
-<a id="cache-mode" class="anchor" href="#cache-mode" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cache mode</h2>
-
-<blockquote>
-<ul>
-<li>Only request network.</li>
-<li>Only read cache.</li>
-<li>The standard Http protocol cache (such as in the case of the response code is 304), need server support, if the server does not support the same way as a common request.</li>
-<li>First request network, after failing to return to the cache.</li>
-<li>First read the cache, the cache request network again.</li>
-</ul>
-</blockquote>
-
-<h2>
-<a id="cancel-request" class="anchor" href="#cancel-request" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cancel Request</h2>
-
-<p>All cancelled all support requests are being executed.</p>
-
-<blockquote>
-<ul>
-<li>Support cancel a request。</li>
-<li>Support to cancel with sign to specify several requests。</li>
-<li>Support cancel all request。</li>
-</ul>
-</blockquote>
-
-<h2>
-<a id="automatically-maintain-cookie" class="anchor" href="#automatically-maintain-cookie" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Automatically maintain Cookie</h2>
-
-<blockquote>
-<ul>
-<li>Maintain support Session, cookies, temporary cookies.</li>
-<li>Support the App after the restart, shutdown boot continue to persistent.</li>
-<li>Provides the interface that allows developers to monitor the change of the cookies, can also change the value of a Cookie.</li>
-</ul>
-</blockquote>
-
-<h2>
-<a id="redirect" class="anchor" href="#redirect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redirect</h2>
-
-<blockquote>
-<ul>
-<li>For Http301, 302, 303, 307 redirect support.</li>
-<li>Support multiple redirection nesting.</li>
-<li>Support disable redirection, NoHttp provides redirection interface operation.</li>
-</ul>
-</blockquote>
-
-<h2>
-<a id="proxy" class="anchor" href="#proxy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Proxy</h2>
-
-<blockquote>
-<ul>
-<li>The standard Java Api, the ProXy: the designated agent of IP and Port.</li>
-<li>Such as agent to your computer for caught when debugging, such as use proxy to access Google.</li>
-</ul>
-</blockquote>
-
-<h1>
-<a id="1-request" class="anchor" href="#1-request" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Request</h1>
-
-<h2>
-<a id="string-request" class="anchor" href="#string-request" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>String request</h2>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-c">// String request object</span>
-<span class="pl-k">Request&lt;<span class="pl-smi">String</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createStringRequest(url, requestMethod);
-</pre></div>
-
-<h2>
-<a id="json-request" class="anchor" href="#json-request" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Json request</h2>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-c">// JsonObject</span>
-<span class="pl-k">Request&lt;<span class="pl-smi">JSONObject</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createJsonObjectRequest(url, reqeustMethod);
-<span class="pl-c1">...</span>
-<span class="pl-c">// JsonArray</span>
-<span class="pl-k">Request&lt;<span class="pl-smi">JSONArray</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createJsonArrayRequest(url, reqeustMethod);</pre></div>
-
-<h2>
-<a id="bitmap-request" class="anchor" href="#bitmap-request" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bitmap request</h2>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">Bitmap</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createImageRequest(url, requestMethod);</pre></div>
-
-<h2>
-<a id="add-params" class="anchor" href="#add-params" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add params</h2>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">JSONObject</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-c1">...</span>
-request<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>yoldada<span class="pl-pds">"</span></span>);<span class="pl-c">// String type</span>
-request<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>age<span class="pl-pds">"</span></span>, <span class="pl-c1">18</span>);<span class="pl-c">// int type</span>
-request<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>sex<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">'</span>0<span class="pl-pds">'</span></span>)<span class="pl-c">// char type</span>
-request<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>time<span class="pl-pds">"</span></span>, <span class="pl-c1">16346468473154</span>); <span class="pl-c">// long type</span>
-<span class="pl-c1">...</span></pre></div>
-
-<h2>
-<a id="add-to-queue" class="anchor" href="#add-to-queue" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add to queue</h2>
+<a id="请求队列" class="anchor" href="#%E8%AF%B7%E6%B1%82%E9%98%9F%E5%88%97" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>请求队列</h2>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-smi">RequestQueue</span> requestQueue <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>newRequestQueue();
-<span class="pl-c">// Or a concurrent value, allowing three concurrent requests at the same time</span>
-<span class="pl-c">// RequestQueue requestQueue = NoHttp.newRequestQueue(3);</span>
+<span class="pl-c">// 如果要指定并发值，传入数字即可：NoHttp.newRequestQueue(3);</span>
 
-<span class="pl-c">// start request</span>
+<span class="pl-c">// 发起请求</span>
 requestQueue<span class="pl-k">.</span>add(what, request, responseListener);</pre></div>
 
-<p>　　Added to the queue above there is a credit, the credit will be <code>responseLisetener</code> response callback to developers，so we can use a <code>responseLisetener</code> accept multiple requests the response，with what to distinguish results. Instead, like some framework, each request to the new a callback.</p>
+<ul>
+<li>添加请求到队列时有一个what，这个what会在<code>responseLisetener</code>响应时回调给开发者，所以开发者可以用一个<code>responseLisetener</code>接受多个请求的响应，用what来区分结果。而不用像有的框架一样，每一个请求都要new一个callback。<br>
+</li>
+<li>
+<strong>强烈建议</strong>把生成队列写成懒汉单例模式，因为每新建队列就会new出相应个数的线程来，同时只有线程数固定了，队列的作用才会发挥到最大。</li>
+</ul>
 
 <h2>
-<a id="synchronous-request" class="anchor" href="#synchronous-request" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Synchronous request</h2>
+<a id="几种数据类型请求" class="anchor" href="#%E5%87%A0%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AF%B7%E6%B1%82" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>几种数据类型请求</h2>
 
-<p>　　In request, the current thread by the thread so used.</p>
+<h3>
+<a id="string请求" class="anchor" href="#string%E8%AF%B7%E6%B1%82" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>String请求</h3>
 
-<div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">String</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-c1">...</span>
-<span class="pl-k">Response&lt;<span class="pl-smi">String</span>&gt;</span> response <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>startRequestSync(request);
-<span class="pl-k">if</span> (response<span class="pl-k">.</span>isSucceed()) {
-    <span class="pl-c">// succeed</span>
-} <span class="pl-k">else</span> {
-    <span class="pl-c">// failed</span>
-}</pre></div>
+<div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">String</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createStringRequest(url, <span class="pl-smi">RequestMethod</span><span class="pl-c1"><span class="pl-k">.</span>GET</span>);
+requestQueue<span class="pl-k">.</span>add(<span class="pl-c1">0</span>, request, listener);</pre></div>
 
-<h1>
-<a id="2-file-upload" class="anchor" href="#2-file-upload" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. File upload</h1>
+<h3>
+<a id="json请求" class="anchor" href="#json%E8%AF%B7%E6%B1%82" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Json请求</h3>
 
-<p>　　Support for multiple File upload, multiple key multiple files, a key multiple files (<code>List &lt; File &gt;</code>). Support File, InputStream, ByteArray containing, Bitmap, realize NoHttp Binary interface, anything can theoretically.</p>
+<div class="highlight highlight-source-java"><pre><span class="pl-c">// JsonObject</span>
+<span class="pl-k">Request&lt;<span class="pl-smi">JSONObject</span>&gt;</span> objRequest <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createJsonObjectRequest(url, <span class="pl-smi">RequestMethod</span><span class="pl-c1"><span class="pl-k">.</span>POST</span>);
+requestQueue<span class="pl-k">.</span>add(<span class="pl-c1">0</span>, objRequest, listener);
+
+<span class="pl-c">// JsonArray</span>
+<span class="pl-k">Request&lt;<span class="pl-smi">JSONArray</span>&gt;</span> arrayRequest <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createJsonArrayRequest(url, <span class="pl-smi">RequestMethod</span><span class="pl-c1"><span class="pl-k">.</span>PUT</span>);
+requestQueue<span class="pl-k">.</span>add(<span class="pl-c1">0</span>, arrayRequest, listener);</pre></div>
+
+<h3>
+<a id="bitmap请求" class="anchor" href="#bitmap%E8%AF%B7%E6%B1%82" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bitmap请求</h3>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">Bitmap</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createImageRequest(url, <span class="pl-smi">RequestMethod</span><span class="pl-c1"><span class="pl-k">.</span>DELETE</span>);
+requestQueue<span class="pl-k">.</span>add(<span class="pl-c1">0</span>, request, listener);</pre></div>
+
+<h3>
+<a id="请求fastjson与gson" class="anchor" href="#%E8%AF%B7%E6%B1%82fastjson%E4%B8%8Egson" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>请求FastJson与Gson</h3>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">// FastJson</span>
+<span class="pl-k">Request&lt;<span class="pl-smi">JSONObject</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">FastJsonRequest</span>(url, <span class="pl-smi">RequestMethod</span><span class="pl-c1"><span class="pl-k">.</span>POST</span>);
+requestQueue<span class="pl-k">.</span>add(<span class="pl-c1">0</span>, request, listener);</pre></div>
+
+<h3>
+<a id="直接请求javabean" class="anchor" href="#%E7%9B%B4%E6%8E%A5%E8%AF%B7%E6%B1%82javabean" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>直接请求JavaBean</h3>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">// 内部使用Gson、FastJson解析成JavaBean</span>
+<span class="pl-k">Request&lt;<span class="pl-smi">UserInfo</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">JavaBeanRequest</span>(url, <span class="pl-smi">RequestMethod</span><span class="pl-c1"><span class="pl-k">.</span>GET</span>);
+requestQueue<span class="pl-k">.</span>add(<span class="pl-c1">0</span>, request, listener);</pre></div>
 
 <h2>
-<a id="a-single-file" class="anchor" href="#a-single-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>A single file</h2>
+<a id="添加参数" class="anchor" href="#%E6%B7%BB%E5%8A%A0%E5%8F%82%E6%95%B0" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>添加参数</h2>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">JSONObject</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">JavaBeanRequest</span>(url, <span class="pl-smi">RequestMethod</span><span class="pl-c1"><span class="pl-k">.</span>POST</span>);
+   .add(<span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>yoldada<span class="pl-pds">"</span></span>) <span class="pl-c">// String类型</span>
+   .add(<span class="pl-s"><span class="pl-pds">"</span>age<span class="pl-pds">"</span></span>, <span class="pl-c1">18</span>) <span class="pl-c">// int类型</span>
+   .add(<span class="pl-s"><span class="pl-pds">"</span>sex<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">'</span>0<span class="pl-pds">'</span></span>) <span class="pl-c">// char类型</span>
+   .add(<span class="pl-s"><span class="pl-pds">"</span>time<span class="pl-pds">"</span></span>, <span class="pl-c1">16346468473154</span>) <span class="pl-c">// long类型</span>
+
+   <span class="pl-c">// 添加Bitmap</span>
+   .add(<span class="pl-s"><span class="pl-pds">"</span>head<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">BitmapBinary</span>(bitmap))
+   <span class="pl-c">// 添加File</span>
+   .add(<span class="pl-s"><span class="pl-pds">"</span>head<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">FileBinary</span>(file))
+   <span class="pl-c">// 添加ByteArray</span>
+   .add(<span class="pl-s"><span class="pl-pds">"</span>head<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">ByteArrayBinary</span>(<span class="pl-k">byte</span>[]))
+   <span class="pl-c">// 添加InputStream</span>
+   .add(<span class="pl-s"><span class="pl-pds">"</span>head<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">InputStreamBinary</span>(inputStream));</pre></div>
+
+<p>文件上传实现了http表单的标准协议，满足了广大开发者的需求，有以下几种形式：</p>
+
+<ul>
+<li>单个文件</li>
+</ul>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">String</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-c1">...</span>
 request<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>file<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">FileBinary</span>(file));</pre></div>
 
-<h2>
-<a id="upload-multiple-files-multiple-key-file-form" class="anchor" href="#upload-multiple-files-multiple-key-file-form" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Upload multiple files, multiple Key file form</h2>
-
-<p>　　Here you can add all kinds of files，File、Bitmap、InputStream、ByteArray：</p>
+<ul>
+<li>上传多个文件、多个Key多个文件形式<br>
+这里可以添加各种形式的文件，File、Bitmap、InputStream、ByteArray。</li>
+</ul>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">String</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-c1">...</span>
 request<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>file1<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">FileBinary</span>(<span class="pl-smi">File</span>));
 request<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>file2<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">FileBinary</span>(<span class="pl-smi">File</span>));
 request<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>file3<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">InputStreamBinary</span>(<span class="pl-smi">InputStream</span>));
 request<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>file4<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">ByteArrayBinary</span>(<span class="pl-k">byte</span>[]));
-request<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>file5<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">BitmapStreamBinary</span>(<span class="pl-smi">Bitmap</span>));</pre></div>
+request<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>file5<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">BitmapBinary</span>(<span class="pl-smi">Bitmap</span>));</pre></div>
 
-<h2>
-<a id="upload-multiple-files-a-key-form-of-multiple-files" class="anchor" href="#upload-multiple-files-a-key-form-of-multiple-files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Upload multiple files, a Key form of multiple files</h2>
-
-<p>　　With the same key to add,  the same key will not be covered.</p>
+<ul>
+<li>上传多个文件、一个Key多个文件形式</li>
+</ul>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">String</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-c1">...</span>
 fileList<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>image<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">FileBinary</span>(<span class="pl-smi">File</span>));
 fileList<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>image<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">InputStreamBinary</span>(<span class="pl-smi">InputStream</span>));
 fileList<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>image<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">ByteArrayBinary</span>(<span class="pl-k">byte</span>[]));
-fileList<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>image<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">BitmapStreamBinary</span>(<span class="pl-smi">Bitmap</span>));</pre></div>
+fileList<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>image<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">BitmapBinary</span>(<span class="pl-smi">Bitmap</span>));</pre></div>
 
-<p>　Or: </p>
+<p>或者：  </p>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">String</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-c1">...</span>
 
@@ -294,152 +379,214 @@ fileList<span class="pl-k">.</span>add(<span class="pl-k">new</span> <span class
 fileList<span class="pl-k">.</span>add(<span class="pl-k">new</span> <span class="pl-smi">BitmapStreamBinary</span>(<span class="pl-smi">Bitmap</span>));
 request<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>file_list<span class="pl-pds">"</span></span>, fileList);</pre></div>
 
-<h1>
-<a id="3-download-file" class="anchor" href="#3-download-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Download file</h1>
+<h2>
+<a id="提交请求包体" class="anchor" href="#%E6%8F%90%E4%BA%A4%E8%AF%B7%E6%B1%82%E5%8C%85%E4%BD%93" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>提交请求包体</h2>
 
-<p>　　Because the downloaded file code is more, post key part, specific please refer to the sample.</p>
+<p>提交Body分为提交Json、提交String、提交Xml、提交流等，具体用法如下：</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">// 提交普通String</span>
+request<span class="pl-k">.</span>setDefineRequestBody(<span class="pl-smi">String</span>, <span class="pl-smi">ContentType</span>);
+
+<span class="pl-c">// 提交json字符串</span>
+request<span class="pl-k">.</span>setDefineRequestBodyForJson(<span class="pl-smi">JsonString</span>)
+
+<span class="pl-c">// 提交jsonObject对象，其实还是json字符串</span>
+request<span class="pl-k">.</span>setDefineRequestBodyForJson(<span class="pl-smi">JSONObject</span>)
+
+<span class="pl-c">// 提交xml字符串</span>
+request<span class="pl-k">.</span>setDefineRequestBodyForXML(<span class="pl-smi">XmlString</span>)
+
+<span class="pl-c">// 提交字体Body，比如File（这跟表单上传不一样的），可以转为InputStream来提交</span>
+request<span class="pl-k">.</span>setDefineRequestBody(<span class="pl-smi">InputStream</span>, <span class="pl-smi">ContentType</span>)</pre></div>
 
 <h2>
-<a id="request-a-download" class="anchor" href="#request-a-download" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Request a download</h2>
+<a id="同步请求" class="anchor" href="#%E5%90%8C%E6%AD%A5%E8%AF%B7%E6%B1%82" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>同步请求</h2>
 
-<div class="highlight highlight-source-java"><pre><span class="pl-c">// download file</span>
-downloadRequest <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createDownloadRequest<span class="pl-k">.</span><span class="pl-c1">..</span>
-<span class="pl-c">// what To distinguish the download.</span>
-<span class="pl-c">// downloadRequest To download the request object.</span>
-<span class="pl-c">// downloadListener Listeningof download.</span>
-downloadQueue<span class="pl-k">.</span>add(<span class="pl-c1">0</span>, downloadRequest, downloadListener);</pre></div>
+<p>在当前线程发起请求，在线程这么使用。</p>
 
-<h2>
-<a id="pause-or-stop-the-download" class="anchor" href="#pause-or-stop-the-download" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pause or stop the download</h2>
-
-<div class="highlight highlight-source-java"><pre>downloadRequest<span class="pl-k">.</span>cancel();</pre></div>
+<div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">String</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createStringRequest(url, <span class="pl-smi">RequestMethod</span><span class="pl-c1"><span class="pl-k">.</span>DELETE</span>);
+<span class="pl-k">Response&lt;<span class="pl-smi">String</span>&gt;</span> response <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>startRequestSync(request);
+<span class="pl-k">if</span> (response<span class="pl-k">.</span>isSucceed()) {
+    <span class="pl-c">// 请求成功</span>
+} <span class="pl-k">else</span> {
+    <span class="pl-c">// 请求失败</span>
+}</pre></div>
 
 <h2>
-<a id="listening-to-the-download-process" class="anchor" href="#listening-to-the-download-process" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Listening to the download process</h2>
+<a id="五大缓存模式" class="anchor" href="#%E4%BA%94%E5%A4%A7%E7%BC%93%E5%AD%98%E6%A8%A1%E5%BC%8F" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>五大缓存模式</h2>
 
-<div class="highlight highlight-source-java"><pre><span class="pl-k">private</span> <span class="pl-smi">DownloadListener</span> downloadListener <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">DownloadListener</span>() {
-    <span class="pl-k">@Override</span>
-    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onStart</span>(<span class="pl-k">int</span> <span class="pl-v">what</span>, <span class="pl-k">boolean</span> <span class="pl-v">resume</span>, <span class="pl-k">long</span> <span class="pl-v">preLenght</span>, <span class="pl-smi">Headers</span> <span class="pl-v">header</span>, <span class="pl-k">long</span> <span class="pl-v">count</span>) {
-        <span class="pl-c">// download start.</span>
-    }
+<p>NoHttp的缓存非常强大，支持缓存到数据库、换到SD卡等，并且不论缓存在数据库或者SD，NoHttp都把数据进行了加密，需要在初始化的时候配置缓存的位置。</p>
 
-    <span class="pl-k">@Override</span>
-    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onProgress</span>(<span class="pl-k">int</span> <span class="pl-v">what</span>, <span class="pl-k">int</span> <span class="pl-v">progress</span>, <span class="pl-k">long</span> <span class="pl-v">downCount</span>) {
-        <span class="pl-c">// update download progress.</span>
-    }
+<p>需要注意的是，在6.0以上的手机中如果要缓存在SD卡，需要在请求之前，需要请求运行时权限，如果你不懂运行时权限，可以看这个项目：<a href="https://github.com/yanzhenjie/AndPermission">AndPermission</a>。</p>
 
-    <span class="pl-k">@Override</span>
-    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onFinish</span>(<span class="pl-k">int</span> <span class="pl-v">what</span>, <span class="pl-smi">String</span> <span class="pl-v">filePath</span>) {
-        <span class="pl-c">// download finish.</span>
-    }
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">NoHttp</span><span class="pl-k">.</span>initialize(<span class="pl-v">this</span>, <span class="pl-k">new</span> <span class="pl-smi">NoHttp</span>.<span class="pl-smi">Config</span>()
+    <span class="pl-c1">...</span>
+    <span class="pl-c">// 保存到数据库</span>
+    .setCacheStore(
+        <span class="pl-k">new</span> <span class="pl-smi">DBCacheStore</span>(<span class="pl-v">this</span>)<span class="pl-k">.</span>setEnable(<span class="pl-c1">true</span>) <span class="pl-c">// 如果不使用缓存，设置false禁用。</span>
+    )
+    <span class="pl-c">// 或者保存到SD卡</span>
+    .setCacheStore(
+        <span class="pl-k">new</span> <span class="pl-smi">DiskCacheStore</span>(<span class="pl-v">this</span>)
+    )
+);</pre></div>
 
-    <span class="pl-k">@Override</span>
-    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onDownloadError</span>(<span class="pl-k">int</span> <span class="pl-v">what</span>, <span class="pl-smi">StatusCode</span> <span class="pl-v">code</span>, <span class="pl-smi">CharSequence</span> <span class="pl-v">message</span>) {
-        <span class="pl-c">// download have a error.</span>
-    }
-
-    <span class="pl-k">@Override</span>
-    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onCancel</span>(<span class="pl-k">int</span> <span class="pl-v">what</span>) {
-        <span class="pl-c">// Download has been cancelled or suspended.</span>
-    }
-};</pre></div>
-
-<p>;</p>
-
-<h1>
-<a id="4-cache-mode" class="anchor" href="#4-cache-mode" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Cache mode</h1>
-
-<h2>
-<a id="1-cache-http-standard-protocols-such-as-when-the-response-code-is-304redirect" class="anchor" href="#1-cache-http-standard-protocols-such-as-when-the-response-code-is-304redirect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Cache Http standard protocols, such as when the response code is 304(redirect)</h2>
-
-<p>　　Is realized RFC2616 NoHttp itself, so there need not set or set to DEFAULT.</p>
+<ul>
+<li>1、Default模式，实现http 304重定向缓存
+NoHttp本身是实现了RFC2616，所以这里不用设置或者设置为DEFAULT。</li>
+</ul>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">JSONObject</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createJsonObjectRequest(url);
 request<span class="pl-k">.</span>setCacheMode(<span class="pl-smi">CacheMode</span><span class="pl-c1"><span class="pl-k">.</span>DEFAULT</span>);</pre></div>
 
-<h2>
-<a id="2-when-the-request-network-failure-and-then-read-the-cache" class="anchor" href="#2-when-the-request-network-failure-and-then-read-the-cache" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. When the request network failure, and then read the cache</h2>
-
-<p>　　Request to the server success is returned data server, if the request to the server fails, read the cache data to return.</p>
+<ul>
+<li>2、 当请求服务器失败的时候，读取缓存
+请求服务器成功则返回服务器数据，如果请求服务器失败，读取缓存数据返回。</li>
+</ul>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">JSONObject</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createJsonObjectRequest(url);
 request<span class="pl-k">.</span>setCacheMode(<span class="pl-smi">CacheMode</span><span class="pl-c1"><span class="pl-k">.</span>REQUEST_NETWORK_FAILED_READ_CACHE</span>);</pre></div>
 
-<h2>
-<a id="3-to-read-the-first-cache-there-is-no-cache-request-to-the-server-again" class="anchor" href="#3-to-read-the-first-cache-there-is-no-cache-request-to-the-server-again" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. To read the first cache, there is no cache request to the server again</h2>
+<ul>
+<li>3、如果发现有缓存直接成功，没有缓存才请求服务器
+我们知道ImageLoader的核心除了内存优化外，剩下一个就是发现把内地有图片则直接使用，没有则请求服务器，所以NoHttp这一点非常使用做一个ImageLoader。<br>
+</li>
+</ul>
 
-<p>　　We know that the core of the ImageLoader besides memory optimization, one is found that the mainland has left image is used directly, without the request to the server, so do a ImageLoader NoHttp this very use.
-　　If there is no cache request to the server, or use the cache:</p>
+<p>请求String，缓存String：</p>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">JSONObject</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createJsonObjectRequest(url);
-<span class="pl-c">// Change the caching pattern to IF_NONE_CACHE_REQUEST_NETWORK.</span>
+<span class="pl-c">// 非标准Http协议，改变缓存模式为IF_NONE_CACHE_REQUEST_NETWORK</span>
 request<span class="pl-k">.</span>setCacheMode(<span class="pl-smi">CacheMode</span><span class="pl-c1"><span class="pl-k">.</span>IF_NONE_CACHE_REQUEST_NETWORK</span>);</pre></div>
 
-<p>　　Request pictures, cache the image:</p>
+<p>请求图片，缓存图片：</p>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">Bitmap</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createImageRequest(imageUrl);
 request<span class="pl-k">.</span>setCacheMode(<span class="pl-smi">CacheMode</span><span class="pl-c1"><span class="pl-k">.</span>IF_NONE_CACHE_REQUEST_NETWORK</span>);</pre></div>
 
-<h2>
-<a id="4-only-request-network" class="anchor" href="#4-only-request-network" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Only request network</h2>
-
-<p>　　Here can't read the cache, can't use Http304:</p>
+<ul>
+<li>4、仅仅请求网络
+这里不会读取缓存，也不支持Http304。</li>
+</ul>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">Bitmap</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createImageRequest(imageUrl);
 request<span class="pl-k">.</span>setCacheMode(<span class="pl-smi">CacheMode</span><span class="pl-c1"><span class="pl-k">.</span>ONLY_REQUEST_NETWORK</span>);
 <span class="pl-c1">...</span></pre></div>
 
-<h2>
-<a id="5-only-read-cache" class="anchor" href="#5-only-read-cache" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>5. Only read cache</h2>
-
-<p>　　Just read the cache, not request network and other operation:</p>
+<ul>
+<li>5、仅仅读取缓存
+仅仅读取缓存，不会请求网络和其它操作。</li>
+</ul>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">Bitmap</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createImageRequest(imageUrl);
 request<span class="pl-k">.</span>setCacheMode(<span class="pl-smi">CacheMode</span><span class="pl-c1"><span class="pl-k">.</span>ONLY_READ_CACHE</span>);</pre></div>
 
-<h1>
-<a id="5-cancel-request" class="anchor" href="#5-cancel-request" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>5. Cancel request</h1>
+<h2>
+<a id="文件下载" class="anchor" href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>文件下载</h2>
+
+<p>因为下载文件代码比较多，这里贴关键部分，具体的请参考demo。  </p>
+
+<p>文件下载也是队列，队列和开头所说的请求的队列是一样的。</p>
+
+<ul>
+<li>发起下载请求</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">//下载文件</span>
+downloadRequest <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>createDownloadRequest<span class="pl-k">.</span><span class="pl-c1">..</span>
+<span class="pl-c">// what 区分下载</span>
+<span class="pl-c">// downloadRequest 下载请求对象</span>
+<span class="pl-c">// downloadListener 下载监听</span>
+downloadQueue<span class="pl-k">.</span>add(<span class="pl-c1">0</span>, downloadRequest, downloadListener);</pre></div>
+
+<ul>
+<li>暂停或者停止下载</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre>downloadRequest<span class="pl-k">.</span>cancel();</pre></div>
+
+<ul>
+<li>监听下载过程</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">private</span> <span class="pl-smi">DownloadListener</span> downloadListener <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">DownloadListener</span>() {
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onStart</span>(<span class="pl-k">int</span> <span class="pl-v">what</span>, <span class="pl-k">boolean</span> <span class="pl-v">resume</span>, <span class="pl-k">long</span> <span class="pl-v">preLenght</span>, <span class="pl-smi">Headers</span> <span class="pl-v">header</span>, <span class="pl-k">long</span> <span class="pl-v">count</span>) {
+        <span class="pl-c">// 下载开始</span>
+    }
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onProgress</span>(<span class="pl-k">int</span> <span class="pl-v">what</span>, <span class="pl-k">int</span> <span class="pl-v">progress</span>, <span class="pl-k">long</span> <span class="pl-v">downCount</span>) {
+        <span class="pl-c">// 更新下载进度</span>
+    }
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onFinish</span>(<span class="pl-k">int</span> <span class="pl-v">what</span>, <span class="pl-smi">String</span> <span class="pl-v">filePath</span>) {
+        <span class="pl-c">// 下载完成</span>
+    }
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onDownloadError</span>(<span class="pl-k">int</span> <span class="pl-v">what</span>, <span class="pl-smi">StatusCode</span> <span class="pl-v">code</span>, <span class="pl-smi">CharSequence</span> <span class="pl-v">message</span>) {
+        <span class="pl-c">// 下载发生错误</span>
+    }
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onCancel</span>(<span class="pl-k">int</span> <span class="pl-v">what</span>) {
+        <span class="pl-c">// 下载被取消或者暂停</span>
+    }
+};</pre></div>
 
 <h2>
-<a id="cancel-a-single-request" class="anchor" href="#cancel-a-single-request" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cancel a single request</h2>
+<a id="取消请求" class="anchor" href="#%E5%8F%96%E6%B6%88%E8%AF%B7%E6%B1%82" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>取消请求</h2>
 
-<p>　　User method <code>cancel()</code> of request.</p>
+<p>NoHttp支持取消某个请求、取消指定多个请求、取消所有请求。</p>
+
+<ul>
+<li>取消单个请求<br>
+直接调用请求对象的cancel方法。</li>
+</ul>
 
 <div class="highlight highlight-source-java"><pre>request<span class="pl-k">.</span>cancel();</pre></div>
 
-<h2>
-<a id="cancel-the-specified-request-from-the-queue" class="anchor" href="#cancel-the-specified-request-from-the-queue" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cancel the specified request from the queue</h2>
+<ul>
+<li>从队列中取消指定的请求
+在请求之前给请求set一个sign，取消的时候调用队列的cancelBySign就可以取消掉所有指定这个sign的请求。</li>
+</ul>
 
-<p>　　To the request set a sign, to cancel the call queue cancelBySign can cancel all specify the sign of the request.</p>
-
-<div class="highlight highlight-source-java"><pre>request<span class="pl-k">.</span>setCancelSign(sign);
+<div class="highlight highlight-source-java"><pre>request1<span class="pl-k">.</span>setCancelSign(sign);
+request2<span class="pl-k">.</span>setCancelSign(sign);
 <span class="pl-c1">...</span>
+
+<span class="pl-c">// 取消队列中多个用sign标志的请求</span>
 queue<span class="pl-k">.</span>cancelBySign(sign);</pre></div>
 
-<h2>
-<a id="cancel-all-requests-in-the-queue" class="anchor" href="#cancel-all-requests-in-the-queue" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cancel all requests in the queue</h2>
+<ul>
+<li>取消队列中所有请求</li>
+</ul>
 
 <div class="highlight highlight-source-java"><pre>queue<span class="pl-k">.</span>cancelAll();</pre></div>
 
 <h2>
-<a id="stop-queue" class="anchor" href="#stop-queue" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Stop queue</h2>
+<a id="停止队列" class="anchor" href="#%E5%81%9C%E6%AD%A2%E9%98%9F%E5%88%97" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>停止队列</h2>
 
-<p>　　After add the request to the queue in the queue to stop, the request will not be executed.</p>
+<p>队列停止后再添加请求到队列后，请求不会被执行。</p>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-smi">RequestQueue</span> queue <span class="pl-k">=</span> <span class="pl-smi">NoHttp</span><span class="pl-k">.</span>newRequestQueue();
 <span class="pl-c1">...</span>
+
 queue<span class="pl-k">.</span>stop();</pre></div>
 
-<h1>
-<a id="6-the-custom-request-type-fastjsonrequest" class="anchor" href="#6-the-custom-request-type-fastjsonrequest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>6. The custom request type: FastJsonRequest</h1>
-
 <h2>
-<a id="define-the-request-object" class="anchor" href="#define-the-request-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Define the request object</h2>
+<a id="自定义请求" class="anchor" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%B7%E6%B1%82" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>自定义请求</h2>
+
+<ul>
+<li>FastJsonRequest</li>
+</ul>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">FastJsonRequest</span> <span class="pl-k">extends</span> <span class="pl-e">RestRequestor&lt;<span class="pl-smi">JSONObject</span>&gt;</span> {
 
     <span class="pl-k">public</span> <span class="pl-en">FastJsonRequest</span>(<span class="pl-smi">String</span> <span class="pl-v">url</span>) {
-        <span class="pl-v">super</span>(url);
+        <span class="pl-v">this</span>(url, <span class="pl-smi">RequestMethod</span><span class="pl-c1"><span class="pl-k">.</span>GET</span>);
     }
 
     <span class="pl-k">public</span> <span class="pl-en">FastJsonRequest</span>(<span class="pl-smi">String</span> <span class="pl-v">url</span>, <span class="pl-smi">RequestMethod</span> <span class="pl-v">requestMethod</span>) {
@@ -447,50 +594,67 @@ queue<span class="pl-k">.</span>stop();</pre></div>
     }
 
     <span class="pl-k">@Override</span>
-    <span class="pl-k">public</span> <span class="pl-smi">JSONObject</span> <span class="pl-en">parseResponse</span>(<span class="pl-smi">String</span> <span class="pl-v">url</span>, <span class="pl-smi">Headers</span> <span class="pl-v">headers</span>, <span class="pl-k">byte</span>[] <span class="pl-v">responseBody</span>) {
-        <span class="pl-smi">String</span> result <span class="pl-k">=</span> <span class="pl-smi">StringRequest</span><span class="pl-k">.</span>parseResponseString(url, headers, responseBody);
-        <span class="pl-smi">JSONObject</span> jsonObject <span class="pl-k">=</span> <span class="pl-c1">null</span>;
-        <span class="pl-k">if</span> (<span class="pl-k">!</span><span class="pl-smi">TextUtils</span><span class="pl-k">.</span>isEmpty(result)) {
-            jsonObject <span class="pl-k">=</span> <span class="pl-c1">JSON</span><span class="pl-k">.</span>parseObject(result);
-        } <span class="pl-k">else</span> {
-            jsonObject <span class="pl-k">=</span> <span class="pl-c1">JSON</span><span class="pl-k">.</span>toJSON(<span class="pl-s"><span class="pl-pds">"</span>{}<span class="pl-pds">"</span></span>);
-        }
-        <span class="pl-k">return</span> jsonObject;
-    }
-
-    <span class="pl-k">@Override</span>
-    <span class="pl-k">public</span> <span class="pl-smi">String</span> <span class="pl-en">getAccept</span>() {
-        <span class="pl-k">return</span> <span class="pl-s"><span class="pl-pds">"</span>application/json<span class="pl-pds">"</span></span>;
+    <span class="pl-k">public</span> <span class="pl-smi">JSONObject</span> <span class="pl-en">parseResponse</span>(<span class="pl-smi">Headers</span> <span class="pl-v">header</span>, <span class="pl-k">byte</span>[] <span class="pl-v">body</span>) <span class="pl-k">throws</span> <span class="pl-smi">Throwable</span> {
+        <span class="pl-smi">String</span> result <span class="pl-k">=</span> <span class="pl-smi">StringRequest</span><span class="pl-k">.</span>parseResponseString(headers, body);
+        <span class="pl-k">return</span> <span class="pl-c1">JSON</span><span class="pl-k">.</span>parseObject(result);
     }
 }</pre></div>
 
+<ul>
+<li>JavaBeanRequest，利用FastJson、Gson等把数据直接转为JavaBean</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">JavaBeanRequest</span>&lt;T&gt; <span class="pl-k">extends</span> <span class="pl-e">RestRequest&lt;<span class="pl-smi">T</span>&gt;</span> {
+    <span class="pl-k">private</span> <span class="pl-k">Class&lt;<span class="pl-smi">T</span>&gt;</span> clazz;
+
+    <span class="pl-k">public</span> <span class="pl-en">JavaBeanRequest</span>(<span class="pl-smi">String</span> <span class="pl-v">url</span>, <span class="pl-k">Class&lt;<span class="pl-smi">T</span>&gt;</span> <span class="pl-v">clazz</span>) {
+        <span class="pl-v">this</span>(url, <span class="pl-smi">RequestMethod</span><span class="pl-c1"><span class="pl-k">.</span>GET</span>, clazz);
+    }
+
+    <span class="pl-k">public</span> <span class="pl-en">JavaBeanRequest</span>(<span class="pl-smi">String</span> <span class="pl-v">url</span>, <span class="pl-smi">RequestMethod</span> <span class="pl-v">requestMethod</span>, <span class="pl-k">Class&lt;<span class="pl-smi">T</span>&gt;</span> <span class="pl-v">clazz</span>) {
+        <span class="pl-v">super</span>(url, requestMethod);
+        <span class="pl-v">this</span><span class="pl-k">.</span>clazz <span class="pl-k">=</span> clazz;
+    }
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-smi">T</span> <span class="pl-en">parseResponse</span>(<span class="pl-smi">Headers</span> <span class="pl-v">header</span>, <span class="pl-k">byte</span>[] <span class="pl-v">body</span>) <span class="pl-k">throws</span> <span class="pl-smi">Throwable</span> {
+        <span class="pl-smi">String</span> response <span class="pl-k">=</span> <span class="pl-smi">StringRequest</span><span class="pl-k">.</span>parseResponseString(header, body);
+
+        <span class="pl-c">// 这里如果数据格式错误，或者解析失败，会在失败的回调方法中返回 ParseError 异常。</span>
+        <span class="pl-k">return</span> <span class="pl-c1">JSON</span><span class="pl-k">.</span>parseObject(response, clazz);
+    }
+}</pre></div>
+
+<ul>
+<li>使用自定义请求</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">// 使用FastJson自定义请求</span>
+<span class="pl-k">Request&lt;<span class="pl-smi">JSONObject</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">FastJsonRequest</span>(url, requestMethod);
+queue<span class="pl-k">.</span>add(what, mRequest, listener);
+
+<span class="pl-c1">...</span>
+
+<span class="pl-c">// 直击请求JavaBean</span>
+<span class="pl-k">Request&lt;<span class="pl-smi">UserInfo</span>&gt;</span> request <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">JavaBeanRequest</span>(url, <span class="pl-smi">UserInfo</span><span class="pl-k">.</span>class);
+queue<span class="pl-k">.</span>add(what, request, listener);</pre></div>
+
 <h2>
-<a id="using-a-custom-request-and-nohttp-default-no-difference" class="anchor" href="#using-a-custom-request-and-nohttp-default-no-difference" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using a custom request and NoHttp default no difference</h2>
+<a id="代码混淆" class="anchor" href="#%E4%BB%A3%E7%A0%81%E6%B7%B7%E6%B7%86" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>代码混淆</h2>
 
-<div class="highlight highlight-source-java"><pre><span class="pl-k">Request&lt;<span class="pl-smi">JSONObject</span>&gt;</span> mRequest <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">FastJsonRequest</span>(url, requestMethod);
-queue<span class="pl-k">.</span>add(what, mRequest, responseListener);</pre></div>
-
-<h1>
-<a id="7-proguard" class="anchor" href="#7-proguard" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>7. Proguard</h1>
-
-<h2>
-<a id="need-to-know" class="anchor" href="#need-to-know" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Need to know</h2>
-
-<pre><code>NoHttp All classes can be confusing.
-</code></pre>
-
-<p>　　NoHttp1.0.0 Using the leve23 API, so have to use leve23 packaging.
-　　NoHttp1.0.1 and higher using the reflection calls the high-level or low-level apis, so as long as it is more than leve9 SDK can be compiled.</p>
-
-<h2>
-<a id="if-you-dont-want-to-keep" class="anchor" href="#if-you-dont-want-to-keep" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>If you don't want to keep</h2>
+<ol>
+<li>NoHttp全部的类都可以混淆。<br>
+</li>
+<li><p>NoHttp设计到兼容高版本系统的api采用反射调用，所以所有类都可以被混淆  </p></li>
+<li><p>如果你非要keep的话，如下配置即可  </p></li>
+</ol>
 
 <pre lang="text"><code>-dontwarn com.yolanda.nohttp.**
 -keep class com.yolanda.nohttp.**{*;}
 </code></pre>
 
-<h1>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
 
 <pre lang="text"><code>Copyright 2016 Yan Zhenjie
 
